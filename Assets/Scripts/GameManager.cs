@@ -56,10 +56,12 @@ public class GameManager : MonoBehaviour
     }
 
     void BigMeteor()
-    {
+    { 
+        Vector3 playeCurrent = player.transform.position;
         meteorCount = 0;
+        // modified so it spawns closer to player positon 
         Instantiate(bigMeteorPrefab, 
-            new Vector3(Random.Range(player.transform.position.x - 4, player.transform.position.x + 4), 6f, 0), Quaternion.identity);
+            new Vector3(Random.Range(playeCurrent.x - 4, playeCurrent.x + 4), 6f, 0), Quaternion.identity);
     }
 
     void LoadWeek5LabScene(InputAction.CallbackContext context)
