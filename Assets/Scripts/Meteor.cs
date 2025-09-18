@@ -64,8 +64,9 @@ public class Meteor : MonoBehaviour
 
         // Calculate the new position
         angle += orbitSpeed * Time.deltaTime;
-        float x = centerObject.position.x + Mathf.Cos(angle) * radius;
-        float y = centerObject.position.z + Mathf.Sin(angle) * radius;
+
+        float x = player.transform.position.x + Mathf.Cos(angle) * radius;
+        float y = player.transform.position.y + Mathf.Sin(angle) * radius;
 
         // Update the position
         transform.position = new Vector3(x, y, transform.position.z);
