@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Instantiate(playerPrefab, transform.position, Quaternion.identity);
-        InvokeRepeating("SpawnMeteor", 1f, 2f);
+        InvokeRepeating("SpawnMeteor", 1f, 4f);
     }
 
     // Update is called once per frame
