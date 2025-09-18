@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 7457709209502035483}
   - component: {fileID: 3424003524506236861}
   - component: {fileID: 332157143033874661}
+  - component: {fileID: -6977023894555528532}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -355,7 +356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148ff4f929dbf1c47aaaff57047d3a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserPrefab: {fileID: 5506627125660967038, guid: 1a8162fa00c811a43904a4f611676905, type: 3}
   cam: {fileID: 0}
 --- !u!114 &332157143033874661
 MonoBehaviour:
@@ -370,6 +370,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraShake
   cinemachineCamera: {fileID: 183541578093335083}
+  player: {fileID: 0}
   originalNoise: {fileID: 0}
   shakeNoise: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   widangle: {fileID: 11400000, guid: 8608ec81ee27a15488d33f9dad239e91, type: 2}
+--- !u!114 &-6977023894555528532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7158442464957206486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c36353b38d9f8478c3ddfe64934a2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shooting
+  laserPrefab: {fileID: 5506627125660967038, guid: 1a8162fa00c811a43904a4f611676905, type: 3}

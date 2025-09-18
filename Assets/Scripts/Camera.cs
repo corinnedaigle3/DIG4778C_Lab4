@@ -26,9 +26,7 @@ public class Camera : MonoBehaviour
 
     private void Update()
     {
-        if (noiseComponent != null) {
-            Debug.Log(noiseComponent.NoiseProfile);
-        }
+       
     }
 
 

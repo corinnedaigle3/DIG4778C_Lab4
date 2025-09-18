@@ -15,11 +15,6 @@ public class Shooting : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     void OnShooting(InputAction.CallbackContext context)
     {
         if (canShoot)

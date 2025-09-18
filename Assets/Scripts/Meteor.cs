@@ -36,10 +36,6 @@ public class Meteor : MonoBehaviour
     void Update()
     {
 
-/*        if (transform.position.y < -11f)
-        {
-            Destroy(this.gameObject);
-        }*/
 
         if (player != null)
         {  
@@ -60,7 +56,7 @@ public class Meteor : MonoBehaviour
         } else if (whatIHit.tag == "Laser")
         {
             cam.Shaking();
-            Debug.Log("Shaking mfk");
+           
 
             GameObject.Find("GameManager").GetComponent<GameManager>().meteorCount++;
             Destroy(whatIHit.gameObject);
@@ -89,7 +85,7 @@ public class Meteor : MonoBehaviour
         // Rotate to face the player
         Vector3 direction = player.transform.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        //transform.rotation = Quaternion.AngleAxis(angle, Vector3.right);
+        
 
         // Adjust the rotation to make the object face the player correctly
         transform.rotation = Quaternion.Euler(0, 0, angle - 90);

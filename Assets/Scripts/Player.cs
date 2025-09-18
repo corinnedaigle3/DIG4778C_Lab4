@@ -7,12 +7,12 @@ using Unity.Cinemachine;
 
 public class Player : MonoBehaviour
 {
-    public GameObject laserPrefab;
-    PlayerInputActions playerInputActions;
+  
+    public PlayerInputActions playerInputActions;
     public Camera cam;
 
     private float speed = 6f;
-    private bool canShoot = true;
+   
 
     private void Awake()
     {
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     {
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
-        playerInputActions.Player.Shoot.performed += OnShooting;
+      
     }
 
     private void OnDisable()
@@ -54,19 +54,5 @@ public class Player : MonoBehaviour
 
     }
 
-    void OnShooting(InputAction.CallbackContext context)
-    {
-        if (canShoot)
-        {
-            Instantiate(laserPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
-            canShoot = false;
-            StartCoroutine("Cooldown");
-        }
-    }
 
-    private IEnumerator Cooldown()
-    {
-        yield return new WaitForSeconds(1f);
-        canShoot = true;
-    }
 }

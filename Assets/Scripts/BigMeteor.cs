@@ -5,14 +5,6 @@ using UnityEngine;
 public class BigMeteor : MonoBehaviour
 {
     private int hitCount = 0;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector3.down * Time.deltaTime * 0.5f);
