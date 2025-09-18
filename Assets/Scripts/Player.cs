@@ -1,45 +1,43 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
     public GameObject laserPrefab;
+    PlayerInputActions playerInputActions;
 
     private float speed = 6f;
-    private float horizontalScreenLimit = 10f;
-    private float verticalScreenLimit = 6f;
     private bool canShoot = true;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         Movement();
-        Shooting();
+    }
+
+    private void OnEnable()
+    {
+        playerInputActions = new PlayerInputActions();
+        playerInputActions.Player.Enable();
+        playerInputActions.Player.Shoot.performed += OnShooting;
+    }
+
+    private void OnDisable()
+    {
+        playerInputActions.Player.Disable();
     }
 
     void Movement()
     {
-        transform.Translate(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * Time.deltaTime * speed);
-        if (transform.position.x > horizontalScreenLimit || transform.position.x <= -horizontalScreenLimit)
-        {
-            transform.position = new Vector3(transform.position.x * -1f, transform.position.y, 0);
-        }
-        if (transform.position.y > verticalScreenLimit || transform.position.y <= -verticalScreenLimit)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y * -1, 0);
-        }
+        Vector2 playerInput = playerInputActions.Player.Move.ReadValue<Vector2>();
+        Vector3 move = new Vector3(playerInput.x, playerInput.y, 0f);
+        transform.position += move * speed * Time.deltaTime;
     }
 
-    void Shooting()
+    void OnShooting(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canShoot)
+        if (canShoot)
         {
             Instantiate(laserPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
             canShoot = false;

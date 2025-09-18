@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.InputSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +10,7 @@ public class GameManager : MonoBehaviour
     public bool gameOver = false;
 
     public int meteorCount = 0;
+    PlayerInputActions playerInputActions;
 
     // Start is called before the first frame update
     void Start()
@@ -27,16 +27,24 @@ public class GameManager : MonoBehaviour
             CancelInvoke();
         }
 
-        if (Input.GetKeyDown(KeyCode.R) && gameOver)
-        {
-            SceneManager.LoadScene("Week5Lab");
-        }
-
         if (meteorCount == 5)
         {
             BigMeteor();
         }
     }
+
+    private void OnEnable()
+    {
+        playerInputActions = new PlayerInputActions();
+        playerInputActions.Player.Enable();
+        playerInputActions.Player.LoadWeek5Lab.performed += LoadWeek5LabScene;
+    }
+
+    private void OnDisable()
+    {
+        playerInputActions.Player.Disable();
+    }
+
 
     void SpawnMeteor()
     {
@@ -47,5 +55,13 @@ public class GameManager : MonoBehaviour
     {
         meteorCount = 0;
         Instantiate(bigMeteorPrefab, new Vector3(Random.Range(-8, 8), 7.5f, 0), Quaternion.identity);
+    }
+
+    void LoadWeek5LabScene(InputAction.CallbackContext context)
+    {
+        if (gameOver)
+        {
+            SceneManager.LoadScene("Week5Lab");
+        }
     }
 }
