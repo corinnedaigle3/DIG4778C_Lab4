@@ -1,6 +1,7 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject meteorPrefab;
     public GameObject bigMeteorPrefab;
     public bool gameOver = false;
+    public GameObject player;
 
     public int meteorCount = 0;
     PlayerInputActions playerInputActions;
@@ -17,6 +19,8 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(playerPrefab, transform.position, Quaternion.identity);
         InvokeRepeating("SpawnMeteor", 1f, 4f);
+        player = GameObject.FindWithTag("Player");
+
     }
 
     // Update is called once per frame
@@ -54,7 +58,8 @@ public class GameManager : MonoBehaviour
     void BigMeteor()
     {
         meteorCount = 0;
-        Instantiate(bigMeteorPrefab, new Vector3(Random.Range(-8, 8), 7.5f, 0), Quaternion.identity);
+        Instantiate(bigMeteorPrefab, 
+            new Vector3(Random.Range(player.transform.position.x - 4, player.transform.position.x + 4), 6f, 0), Quaternion.identity);
     }
 
     void LoadWeek5LabScene(InputAction.CallbackContext context)
@@ -64,4 +69,6 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Week5Lab");
         }
     }
+
+
 }
