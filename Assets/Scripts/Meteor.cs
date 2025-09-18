@@ -21,7 +21,7 @@ public class Meteor : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        radius = Random.Range(5, 7);
+        radius = Random.Range(5f, 7f);
         Debug.Log(radius);
         player = GameObject.FindWithTag("Player");
     }
