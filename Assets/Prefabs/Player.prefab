@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 183541578093335083}
   - component: {fileID: 4575109642716251525}
   - component: {fileID: 355696316809814166}
+  - component: {fileID: 4960075520844070268}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -125,6 +126,23 @@ MonoBehaviour:
     Time: 0
     Smoothing: 0
     IgnoreY: 0
+--- !u!114 &4960075520844070268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051280288197257572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineBasicMultiChannelPerlin
+  NoiseProfile: {fileID: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  AmplitudeGain: 1
+  FrequencyGain: 1
+  m_NoiseOffsets: {x: -584.01587, y: -858.6924, z: 145.29575}
 --- !u!1 &6714411560931903213
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,6 +187,7 @@ GameObject:
   - component: {fileID: 4095847460123581488}
   - component: {fileID: 7457709209502035483}
   - component: {fileID: 3424003524506236861}
+  - component: {fileID: 332157143033874661}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -337,3 +356,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserPrefab: {fileID: 5506627125660967038, guid: 1a8162fa00c811a43904a4f611676905, type: 3}
+  cam: {fileID: 0}
+--- !u!114 &332157143033874661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7158442464957206486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa983d7aaa7c464cac876bb3a246365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraShake
+  cinemachineCamera: {fileID: 183541578093335083}
+  originalNoise: {fileID: 0}
+  shakeNoise: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  widangle: {fileID: 11400000, guid: 8608ec81ee27a15488d33f9dad239e91, type: 2}

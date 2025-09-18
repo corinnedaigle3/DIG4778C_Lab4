@@ -5,7 +5,9 @@ using UnityEngine;
 public class Meteor : MonoBehaviour
 {
     public GameObject player;
-    
+
+    public Camera cam;
+
     // The object to orbit around
     public Transform centerObject;
     
@@ -17,21 +19,27 @@ public class Meteor : MonoBehaviour
     private float angle = 0f;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         radius = Random.Range(5, 7);
         Debug.Log(radius);
         player = GameObject.FindWithTag("Player");
     }
 
+    private void Start()
+    {
+        cam = player.GetComponent<Camera>();
+
+    }
+
     // Update is called once per frame
     void Update()
     {
 
-        if (transform.position.y < -11f)
+/*        if (transform.position.y < -11f)
         {
             Destroy(this.gameObject);
-        }
+        }*/
 
         if (player != null)
         {  
@@ -51,6 +59,9 @@ public class Meteor : MonoBehaviour
             Destroy(this.gameObject);
         } else if (whatIHit.tag == "Laser")
         {
+            cam.Shaking();
+            Debug.Log("Shaking mfk");
+
             GameObject.Find("GameManager").GetComponent<GameManager>().meteorCount++;
             Destroy(whatIHit.gameObject);
             Destroy(this.gameObject);

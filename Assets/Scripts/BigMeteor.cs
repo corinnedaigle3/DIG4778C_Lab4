@@ -17,7 +17,7 @@ public class BigMeteor : MonoBehaviour
     {
         transform.Translate(Vector3.down * Time.deltaTime * 0.5f);
 
-        if (transform.position.y < -11f)
+        if (transform.position.y < -20f)
         {
             Destroy(this.gameObject);
         }

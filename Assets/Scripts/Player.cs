@@ -1,14 +1,23 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.Cinemachine;
+
+
 
 public class Player : MonoBehaviour
 {
     public GameObject laserPrefab;
     PlayerInputActions playerInputActions;
+    public Camera cam;
 
     private float speed = 6f;
     private bool canShoot = true;
+
+    private void Awake()
+    {
+        cam = GetComponent<Camera>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -33,6 +42,16 @@ public class Player : MonoBehaviour
         Vector2 playerInput = playerInputActions.Player.Move.ReadValue<Vector2>();
         Vector3 move = new Vector3(playerInput.x, playerInput.y, 0f);
         transform.position += move * speed * Time.deltaTime;
+
+        if (move.magnitude > 0.01f)
+        {
+            cam.Widangle();
+        }
+        else
+        {
+            cam.Original();
+        }
+
     }
 
     void OnShooting(InputAction.CallbackContext context)

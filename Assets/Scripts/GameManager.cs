@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(playerPrefab, transform.position, Quaternion.identity);
         InvokeRepeating("SpawnMeteor", 1f, 4f);
+        InvokeRepeating("BigMeteor", 15f, 8f);
     }
 
     // Update is called once per frame
@@ -27,10 +28,10 @@ public class GameManager : MonoBehaviour
             CancelInvoke();
         }
 
-        if (meteorCount == 5)
+/*        if (meteorCount == 5)
         {
             BigMeteor();
-        }
+        }*/
     }
 
     private void OnEnable()
